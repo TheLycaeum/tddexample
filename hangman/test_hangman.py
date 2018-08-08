@@ -11,4 +11,11 @@ def test_select_multiple_secret_words():
     for i in range(10):
         words.add(hangman.get_secret_word())
     assert len(words) == 10
-    
+
+def test_mask_word():
+    assert hangman.mask("elephant", []) == "--------"
+    assert hangman.mask("elephant", ['x', 'q']) == "--------"
+    assert hangman.mask("elephant", ['t', 'q']) == "-------t"
+    assert hangman.mask("elephant", ['t', 'e']) == "e-e----t"
+
+
