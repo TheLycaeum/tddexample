@@ -1,7 +1,6 @@
 def panagram(s):
-    s = s.lower()
-    for i in "!?.;: ,":
-        s = s.replace(i,"")
-    a = set(s)
-    return len(a) == 26
+    for i in "abcdefghijklmnopqrstuvwxyz":
+        if i not in s:
+            return False
+    return True
 
