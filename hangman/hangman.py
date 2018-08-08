@@ -11,5 +11,5 @@ def get_secret_word():
         if word.isalpha() and len(word) >= min_length:
             good_words.append(word)
     f.close()
-    
-    return random.choice(good_words)
+
+    return random.choice(good_words).lower()
