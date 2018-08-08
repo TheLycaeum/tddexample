@@ -19,3 +19,11 @@ def test_mask_word():
     assert hangman.mask("elephant", ['t', 'e']) == "e-e----t"
 
 
+def test_guesses_bad_guess():
+    state = dict(tries_left = 10,
+                 guesses = [],
+                 word = "elephant")
+    new_state = hangman.process(state, 'q')
+    assert new_state['tries_left'] == 9
+    assert new_state['guesses'] == ['q']
+
