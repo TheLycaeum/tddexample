@@ -25,7 +25,17 @@ def mask(word, guesses):
 
 
 def process(state, guess):
-    state = dict(tries_left = 9,
-                 guesses = ['q'],
-                 word = "elephant")
+    word = state['word']
+    guesses = state['guesses'][:]
+    if guess in word:
+        tries_left = state['tries_left']
+    else:
+        tries_left = state['tries_left'] - 1
+
+    if guess not in guesses:
+        guesses.append(guess)
+    
+    state = dict(tries_left = tries_left,
+                 guesses = guesses,
+                 word = word)
     return  state
