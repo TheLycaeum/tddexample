@@ -39,3 +39,17 @@ def process(state, guess):
                  guesses = guesses,
                  word = word)
     return  state
+
+def status_message(state):
+    guesses = ", ".join(state['guesses'])
+    status_message = """Word: {}
+Guesses: {}
+Tries left: {}
+""".format(mask(state['word'], state['guesses']),
+           guesses,
+           state['tries_left'])
+    return status_message
+                
+   
+    
+    
