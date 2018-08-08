@@ -1,2 +1,4 @@
 def panagram(s):
-    return False
+    a = set(s.replace(" ", ""))
+    return len(a) == 26
+
