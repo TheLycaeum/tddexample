@@ -51,5 +51,11 @@ Tries left: {}
     return status_message
                 
    
-    
-    
+def game_over(state):
+    if state['tries_left'] == 0:
+        return False, False
+    else:
+        if "-" not in mask(state['word'], state['guesses']):
+            return False, True
+        else:
+            return True, None
