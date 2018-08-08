@@ -13,3 +13,12 @@ def get_secret_word():
     f.close()
 
     return random.choice(good_words).lower()
+
+def mask(word, guesses):
+    masked_word = []
+    for i in word:
+        if i in guesses:
+            masked_word.append(i)
+        else:
+            masked_word.append("-")
+    return "".join(masked_word)
