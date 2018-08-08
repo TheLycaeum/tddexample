@@ -35,6 +35,19 @@ def test_guesses_good_guess():
     assert new_state['tries_left'] == 10
     assert new_state['guesses'] == ['t']
 
+def test_status_message():
+    state = dict(tries_left = 7,
+                 guesses = ['p', 'e', 'q'],
+                 word = "elephant")
+    status = hangman.status_message(state)
+
+    expected = """Word: e-ep----
+Guesses: p, e, q
+Tries left: 7
+"""
+    assert status == expected
+
+
 
 
 
