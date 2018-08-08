@@ -47,6 +47,36 @@ Tries left: 7
 """
     assert status == expected
 
+def test_game_over_failure():
+    state = dict(tries_left = 0,
+                 guesses = ['p', 'e', 'q'],
+                 word = "elephant")
+
+    continue_, win = hangman.game_over(state)
+    
+    assert continue_ == False
+    assert win == False
+
+def test_game_over_success():
+    state = dict(tries_left = 4,
+                 guesses = ['e', 'l', 'x', 'p','h', 'a', 'q', 'n', 't'],
+                 word = "elephant")
+
+    continue_, win = hangman.game_over(state)
+    
+    assert continue_ == False
+    assert win == True
+
+def test_game_over_continue():
+    state = dict(tries_left = 4,
+                 guesses = ['e', 'l', 'x' ,'h', 'a', 'q', 'n', 't'],
+                 word = "elephant")
+
+    continue_, win = hangman.game_over(state)
+    assert continue_ == True
+
+
+    
 
 
 
