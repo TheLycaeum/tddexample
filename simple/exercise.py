@@ -1,5 +1,7 @@
 def panagram(s):
     s = s.lower()
-    a = set(s.replace(" ", ""))
+    for i in "!?.;: ,":
+        s = s.replace(i,"")
+    a = set(s)
     return len(a) == 26
 
