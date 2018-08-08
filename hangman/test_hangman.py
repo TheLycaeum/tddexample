@@ -27,6 +27,14 @@ def test_guesses_bad_guess():
     assert new_state['tries_left'] == 9
     assert new_state['guesses'] == ['q']
 
+def test_guesses_bad_guess_reguess():
+    state = dict(tries_left = 10,
+                 guesses = ['q'],
+                 word = "elephant")
+    new_state = hangman.process(state, 'q')
+    assert new_state['tries_left'] == 10
+    assert new_state['guesses'] == ['q']
+
 def test_guesses_good_guess():
     state = dict(tries_left = 10,
                  guesses = [],

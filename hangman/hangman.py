@@ -27,10 +27,10 @@ def mask(word, guesses):
 def process(state, guess):
     word = state['word']
     guesses = state['guesses'][:]
-    if guess in word:
-        tries_left = state['tries_left']
-    else:
+    if guess not in word and guess not in guesses:
         tries_left = state['tries_left'] - 1
+    else:
+        tries_left = state['tries_left']
 
     if guess not in guesses:
         guesses.append(guess)
@@ -59,3 +59,26 @@ def game_over(state):
             return False, True
         else:
             return True, None
+
+def main():
+    secret_word = get_secret_word()
+    print (secret_word)
+    state = dict(tries_left = 10,
+                 word = secret_word,
+                 guesses = [])
+    continue_ = True
+    while continue_:
+        status = status_message(state)
+        print (status)
+        guess = input ("Enter a letter ")
+        state = process(state, guess)
+        continue_, won = game_over(state)
+        
+    if won == True:
+        print ("Yay! You got it")
+    else:
+        print ("You lost. The word was {}".format(secret_word))
+
+
+if __name__ == "__main__":
+    main()
