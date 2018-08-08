@@ -22,3 +22,10 @@ def mask(word, guesses):
         else:
             masked_word.append("-")
     return "".join(masked_word)
+
+
+def process(state, guess):
+    state = dict(tries_left = 9,
+                 guesses = ['q'],
+                 word = "elephant")
+    return  state
